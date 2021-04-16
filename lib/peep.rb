@@ -1,4 +1,5 @@
 require 'pg'
+require_relative 'database_connection'
 
 class Peep
 
@@ -11,12 +12,7 @@ class Peep
   end
 
   def self.all
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_new_test')
-    else
-      connection = PG.connect(dbname: 'chitter_new')
-    end
-    result = connection.exec('SELECT * FROM chitters;')
+    result = DatabaseConnection.query('SELECT * FROM chitters;')
     result.map { |peep| 
       Peep.new(
         id: peep['id'], 
