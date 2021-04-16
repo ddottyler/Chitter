@@ -4,6 +4,8 @@
 
 <ul>
 <% @peeps.reverse.each do |peep| %>
-<li><%= peep %></li>
+<br>
+<li><%= peep.peep %></li>
+<li>Peep created at<%= peep.time %></li>
 <% end %>
 </ul>
