@@ -33,3 +33,15 @@ describe '.delete' do
     expect(Peep.all.length).to eq 0
   end
 end
+
+describe '.update' do
+  it 'updates the peep with the given data' do
+    Peep.create(peep: 'This is a test peep')
+    peeps = Peep.all
+    updated_peep = Peep.update(id: peeps[0].id, peep: 'This is an updated test peep')
+
+    expect(updated_peep).to be_a Peep
+    expect(updated_peep.id).to eq peeps[0].id
+    expect(updated_peep.peep).to eq 'This is an updated test peep'
+  end
+end

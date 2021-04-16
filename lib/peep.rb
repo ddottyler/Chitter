@@ -33,7 +33,7 @@ class Peep
   end
     time = Time.new.strftime("%d/%m/%Y %k:%M")
     result = connection.exec("INSERT INTO chitters (peep, time) VALUES('#{peep}', '#{time}') RETURNING id, peep, time;")
-    Chitter.new(id: result[0]['id'], peep: result[0]['peep'], time: result[0]['time'])
+    Peep.new(id: result[0]['id'], peep: result[0]['peep'], time: result[0]['time'])
   end
 
   def self.delete(id:)
@@ -43,6 +43,17 @@ class Peep
       connection = PG.connect(dbname: 'chitter_new')
     end
     connection.exec("DELETE FROM chitters WHERE id = #{id}")
+  end
+
+  def self.update(id:, peep:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'chitter_new_test')
+    else 
+      connection = PG.connect(dbname: 'chitter_new')
+    end
+    time = Time.new.strftime("%d/%m/%Y %k:%M")
+    result = connection.exec("UPDATE chitters SET peep = '#{peep}', time = '#{time}' WHERE id = #{id} RETURNING id, peep, time;")
+    Peep.new(id: result[0]['id'], peep: result[0]['peep'], time: result[0]['time'])
   end
 
 end
