@@ -2,6 +2,9 @@
 
 <% if @user %>
   <h1>Welcome, <%= @user.email %></h1>
+  <form action="/sessions/destroy" method="post">
+  <input type="submit" value="Sign out" />
+  </form>
 <% end %>
 
 <a href="/create_peep"><button>Add Peep</button></a>
