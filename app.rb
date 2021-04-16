@@ -2,12 +2,14 @@ require 'sinatra/base'
 require './lib/peep.rb'
 require_relative './database_connection_setup.rb'
 require_relative './lib/comment'
+require_relative './lib/user'
 
 class Chitter < Sinatra::Base
 
   enable :sessions, :method_override
 
   get '/' do
+    @user = User.find(id: session[:user_id])
     @peeps = Peep.all
     erb :homepage 
   end
@@ -44,6 +46,16 @@ class Chitter < Sinatra::Base
 
   post '/peeps/:id/comments' do
     Comment.create(peep_id: params[:id], text: params[:comment])
+    redirect '/'
+  end
+
+  get '/users/new' do
+    erb :new_user
+  end
+
+  post '/users' do
+    user = User.create(email: params['email'], password: params['password'])
+    session[:user_id] = user.id
     redirect '/'
   end
 

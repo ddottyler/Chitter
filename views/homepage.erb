@@ -1,5 +1,9 @@
 <h1>Welcome to Chitter</h1>
 
+<% if @user %>
+  <h1>Welcome, <%= @user.email %></h1>
+<% end %>
+
 <a href="/create_peep"><button>Add Peep</button></a>
 
 <ul>
@@ -17,11 +21,16 @@
         <form action="/peeps/<%= peep.id %>/comments/new" method="get">
         <input type="submit" value="Add Comment" />
       </form>
-      <ul>
-        <% peep.comments.each do |comment| %>
-          <li><%= comment.text %></li>
-        <% end %>
-      </ul>
+       <% if peep.comments.length > 0 %>
+        <div>
+          <h2>Comments</h2>
+          <ul>
+            <% peep.comments.each do |comment| %>
+              <li><%= comment.text %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
     </li>
   <% end %>
 </ul>
