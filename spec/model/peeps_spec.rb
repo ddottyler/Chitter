@@ -45,3 +45,16 @@ describe '.update' do
     expect(updated_peep.peep).to eq 'This is an updated test peep'
   end
 end
+
+describe '.find' do
+  it 'returns the requested peep object' do
+    Peep.create(peep: 'This is a test peep')
+    peeps = Peep.all
+
+    result = Peep.find(id: peeps[0].id)
+
+    expect(result).to be_a Peep
+    expect(result.id).to eq peeps[0].id
+    expect(result.peep).to eq 'This is a test peep'
+  end
+end

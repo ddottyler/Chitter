@@ -20,17 +20,17 @@ class Chitter < Sinatra::Base
   end
 
   delete '/peeps/:id' do
-    p params
     Peep.delete(id: params['id'])
     redirect '/'
   end
 
   get '/peeps/:id/edit' do
-    @peep_id = params[:id]
+    @peep = Peep.find(id: params[:id])
     erb :edit_peep
   end
 
   patch '/peeps/:id' do
+    p params 
     Peep.update(id: params[:id], peep: params[:peep])
     redirect('/')
   end
