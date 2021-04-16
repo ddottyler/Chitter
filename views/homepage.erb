@@ -5,9 +5,11 @@
   <form action="/sessions/destroy" method="post">
   <input type="submit" value="Sign out" />
   </form>
+  <a href="/create_peep"><button>Add Peep</button></a>
+  <% else %>
+  <a href="/users/new"><button>Sign up</button></a>
+  <a href="/sessions/new"><button>Sign in</button></a>
 <% end %>
-
-<a href="/create_peep"><button>Add Peep</button></a>
 
 <ul>
   <% @peeps.reverse.each do |peep| %>
