@@ -1,3 +1,9 @@
 <h1>Welcome to Chitter</h1>
 
 <a href="/create_peep"><button>Add Peep</button></a>
+
+<ul>
+<% @peeps.reverse.each do |peep| %>
+<li><%= peep %></li>
+<% end %>
+</ul>
