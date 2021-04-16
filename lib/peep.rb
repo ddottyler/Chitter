@@ -1,5 +1,6 @@
 require 'pg'
 require_relative 'database_connection'
+require_relative './comment'
 
 class Peep
 
@@ -22,44 +23,28 @@ class Peep
   end
 
   def self.create(peep:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_new_test')
-  else 
-      connection = PG.connect(dbname: 'chitter_new')
-  end
     time = Time.new.strftime("%d/%m/%Y %k:%M")
-    result = connection.exec("INSERT INTO chitters (peep, time) VALUES('#{peep}', '#{time}') RETURNING id, peep, time;")
+    result = DatabaseConnection.query("INSERT INTO chitters (peep, time) VALUES('#{peep}', '#{time}') RETURNING id, peep, time;")
     Peep.new(id: result[0]['id'], peep: result[0]['peep'], time: result[0]['time'])
   end
 
   def self.delete(id:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_new_test')
-    else 
-      connection = PG.connect(dbname: 'chitter_new')
-    end
-    connection.exec("DELETE FROM chitters WHERE id = #{id}")
+    result = DatabaseConnection.query("DELETE FROM chitters WHERE id = #{id}")
   end
 
   def self.update(id:, peep:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_new_test')
-    else 
-      connection = PG.connect(dbname: 'chitter_new')
-    end
     time = Time.new.strftime("%d/%m/%Y %k:%M")
-    result = connection.exec("UPDATE chitters SET peep = '#{peep}', time = '#{time}' WHERE id = #{id} RETURNING id, peep, time;")
+    result = DatabaseConnection.query("UPDATE chitters SET peep = '#{peep}', time = '#{time}' WHERE id = #{id} RETURNING id, peep, time;")
     Peep.new(id: result[0]['id'], peep: result[0]['peep'], time: result[0]['time'])
   end
 
   def self.find(id:)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect(dbname: 'chitter_new_test')
-    else 
-      connection = PG.connect(dbname: 'chitter_new')
-    end
-    result = connection.exec("SELECT * FROM chitters WHERE id = #{id};")
+    result = DatabaseConnection.query("SELECT * FROM chitters WHERE id = #{id};")
     Peep.new(id: result[0]['id'], peep: result[0]['peep'], time: result[0]['time'])
+  end
+
+  def comments(comment_class = Comment)
+    comment_class.where(peep_id: id)
   end
 
 end
