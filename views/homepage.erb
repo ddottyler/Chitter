@@ -3,9 +3,14 @@
 <a href="/create_peep"><button>Add Peep</button></a>
 
 <ul>
-<% @peeps.reverse.each do |peep| %>
-<br>
-<li><%= peep.peep %></li>
-<li>Peep created at<%= peep.time %></li>
-<% end %>
+  <% @peeps.reverse.each do |peep| %>
+    <li class="peep" id="peep-<%= peep.id %>">
+      <a><%= peep.peep %></a>
+      <a><%= peep.time %></a>
+      <form action="/peeps/<%= peep.id %>" method="post">
+        <input type='hidden' name='_method' value='DELETE'/>
+        <input type="submit" value="Delete" />
+      </form>
+    </li>
+  <% end %>
 </ul>

@@ -24,3 +24,12 @@ describe '.create' do
     expect(Peep.all[0].peep).to include 'This is a test peep'
   end
 end
+
+describe '.delete' do
+  it 'deletes the given peep' do
+    Peep.create(peep: 'This is a test peep')
+    peeps = Peep.all
+    Peep.delete(id: peeps[0].id)
+    expect(Peep.all.length).to eq 0
+  end
+end

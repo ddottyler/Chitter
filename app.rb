@@ -3,6 +3,8 @@ require './lib/peep.rb'
 
 class Chitter < Sinatra::Base
 
+  enable :sessions, :method_override
+
   get '/' do
     @peeps = Peep.all
     erb :homepage 
@@ -14,6 +16,12 @@ class Chitter < Sinatra::Base
 
   post '/new_peep' do 
     Peep.create(peep: params[:peep])
+    redirect '/'
+  end
+
+  delete '/peeps/:id' do
+    p params
+    Peep.delete(id: params['id'])
     redirect '/'
   end
 

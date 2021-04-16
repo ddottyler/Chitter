@@ -36,4 +36,13 @@ class Peep
     Chitter.new(id: result[0]['id'], peep: result[0]['peep'], time: result[0]['time'])
   end
 
+  def self.delete(id:)
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'chitter_new_test')
+    else 
+      connection = PG.connect(dbname: 'chitter_new')
+    end
+    connection.exec("DELETE FROM chitters WHERE id = #{id}")
+  end
+
 end
