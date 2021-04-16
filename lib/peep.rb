@@ -1,6 +1,7 @@
 require 'pg'
 require_relative 'database_connection'
 require_relative './comment'
+require 'uri'
 
 class Peep
 

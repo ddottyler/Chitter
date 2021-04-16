@@ -3,6 +3,7 @@ require './lib/peep.rb'
 require_relative './database_connection_setup.rb'
 require_relative './lib/comment'
 require_relative './lib/user'
+require 'sinatra/flash'
 
 class Chitter < Sinatra::Base
 
@@ -65,8 +66,12 @@ class Chitter < Sinatra::Base
 
   post '/sessions' do
     user = User.authenticate(email: params[:email], password: params[:password])
-    session[:user_id] = user.id
-    redirect('/')
+    if user
+      session[:user_id] = user.id
+      redirect('/')
+    else
+      redirect('/sessions/new')
+    end
   end
 
   run! if app_file == $0
