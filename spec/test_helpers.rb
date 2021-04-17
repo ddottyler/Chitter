@@ -21,3 +21,9 @@ end
 def create_user
   User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 end
+
+def post_peep
+  visit('/create_peep')
+  fill_in('peep', with: 'This is a test peep')
+  click_button('Post')
+end

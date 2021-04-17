@@ -3,7 +3,7 @@
 feature 'Viewing chitter' do
   scenario 'visiting the index page' do
     visit('/')
-    expect(page).to have_content 'Welcome to Chitter'
+    expect(page).to have_link 'Chitter'
   end
 end
 

@@ -44,7 +44,6 @@ Once you have cloned this project:
 
 1. Styling to be added to all pages and elements
 2. Functional navbar
-3. Follow other users feature
-4. Delete button to be added to comments
-5. Circle CI to be added
-6. Add project to Heroku
+3. Delete button to be added to comments
+4. Circle CI to be added
+5. Add project to Heroku

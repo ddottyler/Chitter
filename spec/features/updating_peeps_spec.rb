@@ -2,14 +2,13 @@
 
 feature 'Updating a peep' do
   scenario 'A user can update a peep' do
-    user = create_user
-    Peep.create(peep: 'This is a test peep', userid: user.id)
-    peeps = Peep.all
+    sign_up_and_continue
+    post_peep
+    visit '/'
     visit('/')
     expect(page).to have_content 'This is a test peep'
 
     first('.peep').click_button 'Edit'
-    expect(current_path).to eq "/peeps/#{peeps[0].id}/edit"
 
     fill_in('peep', with: 'This peep has been updated')
     click_button('Edit')

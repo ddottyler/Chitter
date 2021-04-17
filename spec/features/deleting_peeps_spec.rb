@@ -3,8 +3,9 @@
 require_relative  '../test_helpers'
 feature 'Deleting a peep' do
   scenario 'A user can delete a peep' do
-    user = create_user
-    Peep.create(peep: 'This is a test peep', userid: user.id)
+    sign_up_and_continue
+    post_peep
+    visit '/'
     visit('/')
     expect(page).to have_content('This is a test peep')
 
