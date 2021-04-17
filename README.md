@@ -42,11 +42,9 @@ Once you have cloned this project:
 
 ### Next steps on the project
 
-1. User names to be added to each users peep
-2. Styling to be added to all pages and elements
-3. Functional navbar
-4. Follow other users feature
-5. Delete button to be added to comments
-6. Circle CI to be added
-7. Test coverage to be added
-8. Add project to Heroku
+1. Styling to be added to all pages and elements
+2. Functional navbar
+3. Follow other users feature
+4. Delete button to be added to comments
+5. Circle CI to be added
+6. Add project to Heroku

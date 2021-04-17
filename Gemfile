@@ -13,3 +13,5 @@ gem 'capybara'
 gem 'pg'
 gem 'bcrypt'
 gem "sinatra-flash"
+gem 'simplecov', require: false
+gem 'simplecov-console', require: false
