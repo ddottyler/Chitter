@@ -1,7 +1,6 @@
 require 'pg'
 require_relative 'database_connection'
 require_relative './comment'
-require 'uri'
 
 class Peep
 
@@ -30,6 +29,7 @@ class Peep
   end
 
   def self.delete(id:)
+    DatabaseConnection.query("DELETE FROM comments WHERE peep_id = #{id}")
     result = DatabaseConnection.query("DELETE FROM chitters WHERE id = #{id}")
   end
 
