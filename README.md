@@ -42,7 +42,7 @@ Once you have cloned this project:
 
 ### Next steps on the project
 
-1. User names to be added to each user and their peeps
+1. User names to be added to each users peep
 2. Styling to be added to all pages and elements
 3. Functional navbar
 4. Follow other users feature

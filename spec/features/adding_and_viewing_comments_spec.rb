@@ -1,7 +1,10 @@
+require_relative  '../test_helpers.rb'
+
 feature 'Adding and viewing comments' do
   feature 'a user can add and then view a comment' do
     scenario 'a comment is added to a peep' do
-      Peep.create(peep: 'This is a test peep')
+      user = User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
+      Peep.create(peep: 'This is a test peep', username: user.username)
       peeps = Peep.all
 
       visit '/'
