@@ -35,7 +35,6 @@ class Chitter < Sinatra::Base
   end
 
   patch '/peeps/:id' do
-    p params 
     Peep.update(id: params[:id], peep: params[:peep])
     redirect('/')
   end
