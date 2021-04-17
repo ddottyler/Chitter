@@ -1,6 +1,8 @@
+require_relative  '../test_helpers.rb'
 feature 'Deleting a peep' do
   scenario 'A user can delete a peep' do
-    Peep.create(peep: 'This is a test peep')
+    user = create_user
+    Peep.create(peep: 'This is a test peep', userid: user.id)
     visit('/')
     expect(page).to have_content('This is a test peep')
 

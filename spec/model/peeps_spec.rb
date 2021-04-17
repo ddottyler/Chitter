@@ -9,9 +9,10 @@ describe Peep do
       connection = PG.connect(dbname: 'chitter_new_test')
 
       # Add the test data
-      Peep.create(peep: "This is a test peep")
-      Peep.create(peep: "This is a second test peep")
-      Peep.create(peep: "This is a third test peep")
+      user = create_user
+      Peep.create(peep: 'This is a test peep', userid: user.id)
+      Peep.create(peep: "This is a second test peep", userid: user.id)
+      Peep.create(peep: "This is a third test peep", userid: user.id)
 
       peep = Peep.all
 
@@ -23,7 +24,8 @@ describe Peep do
 
   describe '.create' do
     it 'creates a new peep' do
-      Peep.create(peep: 'This is a test peep')
+      user = create_user
+      Peep.create(peep: 'This is a test peep', userid: user.id)
 
       persisted_data = persisted_data(id: Peep.all[0].id, table: 'chitters')
 
@@ -33,7 +35,8 @@ describe Peep do
 
   describe '.delete' do
     it 'deletes the given peep' do
-      Peep.create(peep: 'This is a test peep')
+      user = create_user
+      Peep.create(peep: 'This is a test peep', userid: user.id)
       peeps = Peep.all
       Peep.delete(id: peeps[0].id)
       expect(Peep.all.length).to eq 0
@@ -42,7 +45,8 @@ describe Peep do
 
   describe '.update' do
     it 'updates the peep with the given data' do
-      Peep.create(peep: 'This is a test peep')
+      user = create_user
+      Peep.create(peep: 'This is a test peep', userid: user.id)
       peeps = Peep.all
       updated_peep = Peep.update(id: peeps[0].id, peep: 'This is an updated test peep')
 
@@ -54,10 +58,12 @@ describe Peep do
 
   describe '.find' do
     it 'returns the requested peep object' do
-      Peep.create(peep: 'This is a test peep')
+      user = create_user
+      Peep.create(peep: 'This is a test peep', userid: user.id)
       peeps = Peep.all
-
-      result = Peep.find(id: peeps[0].id)
+      peep = peeps[0]
+      p peep.id 
+      result = Peep.find(id: peep.id)
 
       expect(result).to be_a Peep
       expect(result.id).to eq peeps[0].id
@@ -67,7 +73,8 @@ describe Peep do
 
   describe '#comments' do
     it 'calls .where on the Comment class' do
-      Peep.create(peep: 'This is a test peep')
+      user = create_user
+      Peep.create(peep: 'This is a test peep', userid: user.id)
       expect(comment_class).to receive(:where).with(peep_id: Peep.all[0].id)
 
       Peep.all[0].comments(comment_class)

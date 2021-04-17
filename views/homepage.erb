@@ -17,7 +17,8 @@
       <a><%= peep.peep %></a>
       <br>
       <a><%= peep.time %></a>
-      <a><%= User.find(peep.id).name %></a>
+      <br>
+      <a>User: <%= User.find(id: peep.userid).username %></a>
       <form action="/peeps/<%= peep.id %>" method="post">
         <input type='hidden' name='_method' value='DELETE'/>
         <input type="submit" value="Delete" />

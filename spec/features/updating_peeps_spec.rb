@@ -1,6 +1,7 @@
 feature 'Updating a peep' do
   scenario 'A user can update a peep' do
-    Peep.create(peep: 'This is a test peep')
+    user = create_user
+    Peep.create(peep: 'This is a test peep', userid: user.id)
     peeps = Peep.all
     visit('/')
     expect(page).to have_content 'This is a test peep'

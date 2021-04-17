@@ -8,6 +8,6 @@ feature 'Adding a new peep' do
     click_button('Post')
 
     expect(page).to have_content 'This is a test peep'
-    expect(page).to have_content 'User - testuser'
+    expect(page).to have_content 'User: testuser'
   end
 end

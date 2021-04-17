@@ -5,7 +5,8 @@ require 'database_helpers'
 describe Comment do
   describe '.create' do
     it 'creates a new comment' do
-      Peep.create(peep: 'This is a test peep')
+      user = create_user
+      Peep.create(peep: 'This is a test peep', userid: user.id)
       peeps = Peep.all
       comment = Comment.create(text: 'This is a test comment', peep_id: peeps[0].id)
 
@@ -20,7 +21,8 @@ describe Comment do
 
   describe '.where' do
     it 'gets the relevant comments from the databse' do
-      Peep.create(peep: 'This is a test peep')
+      user = create_user
+      Peep.create(peep: 'This is a test peep', userid: user.id)
       peeps = Peep.all
       comment = Comment.create(text: 'This is a test comment', peep_id: peeps[0].id)
       Comment.create(text: 'This is a second test comment', peep_id: peeps[0].id)
