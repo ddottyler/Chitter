@@ -15,6 +15,7 @@
   <% @peeps.reverse.each do |peep| %>
     <li class="peep" id="peep-<%= peep.id %>">
       <a><%= peep.peep %></a>
+      <br>
       <a><%= peep.time %></a>
       <form action="/peeps/<%= peep.id %>" method="post">
         <input type='hidden' name='_method' value='DELETE'/>
