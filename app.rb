@@ -1,25 +1,26 @@
+# frozen_string_literal: true
+
 require 'sinatra/base'
-require './lib/peep.rb'
-require_relative './database_connection_setup.rb'
+require './lib/peep'
+require_relative './database_connection_setup'
 require_relative './lib/comment'
 require_relative './lib/user'
 require 'sinatra/flash'
 
 class Chitter < Sinatra::Base
-
   enable :sessions, :method_override
 
   get '/' do
     @user = User.find(id: session[:userid])
     @peeps = Peep.all
-    erb :homepage 
+    erb :homepage
   end
 
   get '/create_peep' do
     erb :create_peep
-  end 
+  end
 
-  post '/new_peep' do 
+  post '/new_peep' do
     Peep.create(peep: params[:peep], userid: session[:userid])
     redirect '/'
   end
@@ -78,5 +79,5 @@ class Chitter < Sinatra::Base
     redirect('/')
   end
 
-  run! if app_file == $0
+  run! if app_file == $PROGRAM_NAME
 end

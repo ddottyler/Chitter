@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'comment'
 require 'peep'
 require 'database_helpers'
@@ -24,7 +26,7 @@ describe Comment do
       user = create_user
       Peep.create(peep: 'This is a test peep', userid: user.id)
       peeps = Peep.all
-      comment = Comment.create(text: 'This is a test comment', peep_id: peeps[0].id)
+      Comment.create(text: 'This is a test comment', peep_id: peeps[0].id)
       Comment.create(text: 'This is a second test comment', peep_id: peeps[0].id)
 
       comments = Comment.where(peep_id: peeps[0].id)

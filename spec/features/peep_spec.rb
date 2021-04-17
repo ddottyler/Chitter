@@ -1,4 +1,6 @@
-require_relative  '../test_helpers.rb'
+# frozen_string_literal: true
+
+require_relative  '../test_helpers'
 
 feature 'Adding a new peep' do
   scenario 'A user can add a peep to Chitter' do

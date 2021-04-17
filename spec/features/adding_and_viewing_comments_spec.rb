@@ -1,4 +1,6 @@
-require_relative  '../test_helpers.rb'
+# frozen_string_literal: true
+
+require_relative '../test_helpers'
 
 feature 'Adding and viewing comments' do
   feature 'a user can add and then view a comment' do

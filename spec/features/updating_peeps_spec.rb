@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 feature 'Updating a peep' do
   scenario 'A user can update a peep' do
     user = create_user
@@ -9,11 +11,11 @@ feature 'Updating a peep' do
     first('.peep').click_button 'Edit'
     expect(current_path).to eq "/peeps/#{peeps[0].id}/edit"
 
-    fill_in('peep', with: "This peep has been updated")
+    fill_in('peep', with: 'This peep has been updated')
     click_button('Edit')
 
     expect(current_path).to eq '/'
     expect(page).not_to have_content('This is a test peep')
-    expect(page).to have_content("This peep has been updated")
+    expect(page).to have_content('This peep has been updated')
   end
 end

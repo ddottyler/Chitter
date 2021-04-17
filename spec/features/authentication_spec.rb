@@ -1,13 +1,11 @@
-require_relative  '../test_helpers.rb'
+# frozen_string_literal: true
+
+require_relative '../test_helpers'
 
 feature 'authentication' do
   it 'a user can sign in' do
-    # Create a test user
     create_user
-
-    # Then sign in as them
     sign_in
-
     expect(page).to have_content 'Welcome, testuser'
   end
 
@@ -34,15 +32,9 @@ feature 'authentication' do
   end
 
   scenario 'a user can sign out' do
-    # Create the user
     create_user
-
-    # Sign in as that user
     sign_in
-
-    # Sign out
     click_button('Sign out')
-
     expect(page).not_to have_content 'Welcome, test@example.com'
   end
 end

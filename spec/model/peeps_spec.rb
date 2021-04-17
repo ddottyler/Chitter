@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'peep'
 
-describe Peep do 
-
+describe Peep do
   let(:comment_class) { double(:comment_class) }
 
   describe '.all' do
@@ -11,14 +12,14 @@ describe Peep do
       # Add the test data
       user = create_user
       Peep.create(peep: 'This is a test peep', userid: user.id)
-      Peep.create(peep: "This is a second test peep", userid: user.id)
-      Peep.create(peep: "This is a third test peep", userid: user.id)
+      Peep.create(peep: 'This is a second test peep', userid: user.id)
+      Peep.create(peep: 'This is a third test peep', userid: user.id)
 
       peep = Peep.all
 
-      expect(peep[0].peep).to include("This is a test peep")
-      expect(peep[1].peep).to include("This is a second test peep")
-      expect(peep[2].peep).to include("This is a third test peep")
+      expect(peep[0].peep).to include('This is a test peep')
+      expect(peep[1].peep).to include('This is a second test peep')
+      expect(peep[2].peep).to include('This is a third test peep')
     end
   end
 
@@ -62,7 +63,6 @@ describe Peep do
       Peep.create(peep: 'This is a test peep', userid: user.id)
       peeps = Peep.all
       peep = peeps[0]
-      p peep.id 
       result = Peep.find(id: peep.id)
 
       expect(result).to be_a Peep
@@ -80,4 +80,4 @@ describe Peep do
       Peep.all[0].comments(comment_class)
     end
   end
-end 
+end

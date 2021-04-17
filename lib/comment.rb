@@ -1,8 +1,14 @@
+# frozen_string_literal: true
+
 require_relative './database_connection'
 
 class Comment
   def self.create(peep_id:, text:)
-    result = DatabaseConnection.query("INSERT INTO comments (peep_id, text) VALUES ('#{peep_id}','#{text}') RETURNING id, text, peep_id;")
+    result = DatabaseConnection.query(
+      "INSERT INTO comments (peep_id, text)
+      VALUES ('#{peep_id}','#{text}')
+      RETURNING id, text, peep_id;"
+    )
     Comment.new(
       id: result[0]['id'],
       text: result[0]['text'],

@@ -3,6 +3,8 @@
     "coverage": {
       "/Users/dantyler/Coding-Projects/Chitter/spec/features/adding_and_viewing_comments_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -29,6 +31,8 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/test_helpers.rb": {
         "lines": [
+          null,
+          null,
           1,
           2,
           2,
@@ -54,16 +58,14 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/features/authentication_spec.rb": {
         "lines": [
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
           null,
           null,
           1,
           null,
+          1,
+          1,
+          1,
+          1,
           1,
           null,
           null,
@@ -90,15 +92,9 @@
           null,
           null,
           1,
-          null,
           1,
-          null,
-          null,
           1,
-          null,
-          null,
           1,
-          null,
           1,
           null,
           null
@@ -106,6 +102,8 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/features/deleting_peeps_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -124,22 +122,9 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/features/homepage_spec.rb": {
         "lines": [
-          1,
-          1,
-          1,
-          1,
-          null,
           null,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
           1,
           1,
           1,
@@ -150,18 +135,34 @@
           1,
           1,
           1,
+          1,
+          1,
           null,
+          1,
           null,
           1,
           1,
           1,
           null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
           null,
           null
         ]
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/features/peep_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -179,6 +180,8 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/features/registration_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           null,
           1,
@@ -192,6 +195,8 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/features/updating_peeps_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -215,6 +220,8 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/model/comment_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           1,
@@ -259,6 +266,8 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/database_helpers.rb": {
         "lines": [
+          null,
+          null,
           1,
           4,
           4,
@@ -267,10 +276,11 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/model/database_connection_spec.rb": {
         "lines": [
-          1,
+          null,
           null,
           1,
           null,
+          1,
           1,
           1,
           1,
@@ -300,10 +310,11 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/model/peeps_spec.rb": {
         "lines": [
-          1,
+          null,
           null,
           1,
           null,
+          1,
           2,
           null,
           1,
@@ -365,7 +376,6 @@
           1,
           1,
           1,
-          1,
           null,
           1,
           1,
@@ -387,6 +397,8 @@
       },
       "/Users/dantyler/Coding-Projects/Chitter/spec/model/user_spec.rb": {
         "lines": [
+          null,
+          null,
           1,
           1,
           null,
@@ -449,6 +461,6 @@
         ]
       }
     },
-    "timestamp": 1618665405
+    "timestamp": 1618666100
   }
 }

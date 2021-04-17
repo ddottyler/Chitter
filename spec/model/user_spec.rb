@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'user'
 require 'database_helpers'
 
@@ -26,7 +28,7 @@ describe User do
       user = User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 
       result = User.find(id: user.id)
-    
+
       expect(result.id).to eq user.id
       expect(result.email).to eq user.email
       expect(result.username).to eq user.username
@@ -40,20 +42,20 @@ describe User do
     it 'returns a user given a correct username and password, if one exists' do
       user = User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
       authenticated_user = User.authenticate(email: 'test@example.com', password: 'password123')
-  
+
       expect(authenticated_user.id).to eq user.id
     end
 
     it 'returns nil given an incorrect email address' do
       User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
-  
+
       expect(User.authenticate(email: 'nottherightemail@me.com', password: 'password123')).to be_nil
     end
-    
+
     it 'returns nil given an incorrect password' do
       User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 
       expect(User.authenticate(email: 'test@example.com', password: 'wrongpassword')).to be_nil
     end
-  end 
+  end
 end

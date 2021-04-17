@@ -1,4 +1,6 @@
-require_relative  '../test_helpers.rb'
+# frozen_string_literal: true
+
+require_relative  '../test_helpers'
 feature 'Deleting a peep' do
   scenario 'A user can delete a peep' do
     user = create_user
