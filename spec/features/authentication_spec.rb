@@ -1,7 +1,7 @@
 feature 'authentication' do
   it 'a user can sign in' do
     # Create a test user
-    User.create(email: 'test@example.com', password: 'password123')
+    User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 
     # Then sign in as them
     visit '/sessions/new'
@@ -9,11 +9,11 @@ feature 'authentication' do
     fill_in(:password, with: 'password123')
     click_button('Sign in')
 
-    expect(page).to have_content 'Welcome, test@example.com'
+    expect(page).to have_content 'Welcome, testuser'
   end
 
   scenario 'a user sees an error if they get their email wrong' do
-    User.create(email: 'test@example.com', password: 'password123')
+    User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 
     visit '/sessions/new'
     fill_in(:email, with: 'nottherightemail@me.com')
@@ -24,7 +24,7 @@ feature 'authentication' do
   end
 
   scenario 'a user sees an error if they get their password wrong' do
-    User.create(email: 'test@example.com', password: 'password123')
+    User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 
     visit '/sessions/new'
     fill_in(:email, with: 'test@example.com')
@@ -36,7 +36,7 @@ feature 'authentication' do
 
   scenario 'a user can sign out' do
     # Create the user
-    User.create(email: 'test@example.com', password: 'password123')
+    User.create(email: 'test@example.com', password: 'password123', username: 'testuser')
 
     # Sign in as that user
     visit '/sessions/new'
